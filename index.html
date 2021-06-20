@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="inside">
+   <h1>Covid-19 Cases</h1> 
+   <table class="tab">
+       <thead>
+       <tr>
+       <th>Total Cases</th>
+       <th>Total Deaths</th>
+       <th>Total Recovered</th>
+       <tr>
+       </tr>
+    </thead>
+    <tr id="data"></tr>
+   
+   </table>
+   <div class='button' onclick="refreshData()">Refresh Data</div>
+   </div>
+</div>
+
+   <script>
+       const refreshData=()=>{
+           clearData()
+           function clearData(){
+               document.getElementById("data").innerHTML=''
+                init()
+           }   
+
+       }
+       window.onload=function(){
+           init()
+          
+       }
+       function init(){
+               var value=''
+                var url="https://api.covid19api.com/summary"
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", url, false ); 
+                xmlHttp.send( null );
+                
+                var data=JSON.parse( xmlHttp.responseText)
+                
+                value= `
+                    <td> ${data.Global.TotalConfirmed} </td>
+                    <td> ${data.Global.TotalDeaths} </td>
+                    <td> ${data.Global.TotalRecovered} </td>
+                `
+                document.getElementById("data").innerHTML=value
+                console.log("Hello from init")
+                
+                
+           }
+       
+      
+    
+   </script>
+</body>
+</html>
