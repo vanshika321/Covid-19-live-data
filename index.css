@@ -5,6 +5,7 @@
     padding:0;
     box-sizing: border-box;
     font-family:'Poppins','sans-serif';
+    background: #d1cfcf;
 }
 .container{
     
@@ -18,9 +19,13 @@
 h1{
     margin-bottom: 20px;
 }
+.tab{
+    border: solid 1px black;
+}
  tr{
      background-color: #f2f2f2;
      text-align: center;
+     border: solid 1px black;
        
 }
 th{
